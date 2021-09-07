@@ -3,7 +3,10 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        padding: 10
+        padding: 10,
+        // borderBottomColor: 'grey',
+        // borderBottomWidth: 2,
+
     },
     image: {
         width: 50,

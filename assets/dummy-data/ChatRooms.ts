@@ -6,12 +6,12 @@ export default [{
     imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
   }, {
     id: 'u2',
-    name: 'Elon Musk',
+    name: 'Irfan Mohiuddin Siddiqui',
     imageUri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/elon.png',
   }],
   lastMessage: {
     id: 'm1',
-    content: 'btw, SpaceX is interested in buying notJust.dev!',
+    content: 'How is everything in Kondapur?',
     createdAt: '2020-10-03T14:48:00.000Z',
   },
   newMessage: 2,
