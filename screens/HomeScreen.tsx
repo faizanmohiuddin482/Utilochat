@@ -8,6 +8,7 @@ export default function TabOneScreen() {
 
   return (
     <View style={styles.page}>
+      {/* Check list header component for stories in future, render below flat list inside the listheader component prop function  */}
       <FlatList data={ChatRoomData} renderItem={({ item }) => <ChatRoomItem chatRoom={item} />} showsVerticalScrollIndicator={false} />
     </View>
   );
