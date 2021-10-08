@@ -1,35 +1,24 @@
 import * as React from 'react';
 import { Text, View } from '../components/Themed';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import Message from '../components/Message';
+import ChatData from '../assets/dummy-data/Chats';
+import InputField from '../components/InputField';
 
 export default function ChatRoomScreen() {
-    const sender = false;
-
+    const data = ChatData.messages;
     return (
-        <View>
-            <View style={[styles.positionMessage, { alignItems: sender ? 'flex-end' : 'flex-start' }]}>
-                <View style={styles.messageContainer}>
-                    <Text style={styles.message}>
-                        Hello message
-                    </Text>
-                </View>
-            </View>
-        </View>
+        <SafeAreaView style={styles.page}>
+            <FlatList data={data} showsVerticalScrollIndicator={false} renderItem={(item) => <Message message={item.item.content} isMe={item.item.user.id == 'u1' ? true : false} key={item.item.id} />} />
+            {/* {data.map((item) => <Message message={item.item.content} isMe={item.item.user.id == 'u1' ? true : false} key={item.item.id} />)} */}
+            <InputField />
+        </SafeAreaView>
     );
 
 }
 
 const styles = StyleSheet.create({
-    positionMessage: {
-        margin: 15
-    },
-    messageContainer: {
-        backgroundColor: 'red',
-        borderRadius: 50,
-        alignItems: 'flex-end'
-    },
-    message: {
-        padding: 10,
-        margin: 5
+    page: {
+        flex: 1,
     }
 })
