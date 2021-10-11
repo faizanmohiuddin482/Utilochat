@@ -12,8 +12,15 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
-import { Text, View } from "../components/Themed";
+import {
+  ColorSchemeName,
+  Pressable,
+  Image,
+  useWindowDimensions,
+  View,
+} from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { Text } from "../components/Themed";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
@@ -56,12 +63,12 @@ function RootNavigator() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ headerTitle: (props) => HomeHeader}}
+        options={{ headerTitle: HomeHeader }}
       />
       <Stack.Screen
         name="ChatRoom"
         component={ChatRoomScreen}
-        options={{ title: "Chat room" }}
+        options={{ headerTitle: ChatRoomHeader, headerBackTitleVisible: false }}
       />
       {/* <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
@@ -72,9 +79,84 @@ function RootNavigator() {
   );
 }
 
-const HomeHeader=(props)=>{
-  <Text>Hello</Text>
-}
+const HomeHeader = () => {
+  const { width } = useWindowDimensions();
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width,
+        padding: 10,
+        alignItems: "center",
+      }}
+    >
+      <Image
+        source={{
+          uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
+        }}
+        style={{ width: 30, height: 30, borderRadius: 30 }}
+      />
+      <Text
+        style={{
+          flex: 1,
+          textAlign: "center",
+          marginLeft: 50,
+          fontWeight: "bold",
+        }}
+      >
+        Home
+      </Text>
+      <Feather
+        name="camera"
+        size={20}
+        color="grey"
+        style={{ marginHorizontal: 10 }}
+      />
+      <Feather
+        name="edit"
+        size={20}
+        color="grey"
+        style={{ marginHorizontal: 10 }}
+      />
+    </View>
+  );
+};
+
+const ChatRoomHeader = (props) => {
+  const { width } = useWindowDimensions();
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: width - 25,
+        padding: 10,
+        alignItems: "center",
+      }}
+    >
+      <Image
+        source={{
+          uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
+        }}
+        style={{ width: 30, height: 30, borderRadius: 30 }}
+      />
+      <Text style={{ flex: 1, marginLeft: 10, fontWeight: "bold" }}>{props.children}</Text>
+      <Feather
+        name="camera"
+        size={20}
+        color="grey"
+        style={{ marginHorizontal: 10 }}
+      />
+      <Feather
+        name="edit"
+        size={20}
+        color="grey"
+        style={{ marginHorizontal: 22 }}
+      />
+    </View>
+  );
+};
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.

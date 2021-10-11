@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View } from "../components/Themed";
 import { StyleSheet, FlatList, SafeAreaView } from "react-native";
-import { useRoute } from "@react-navigation/core";
+import { useRoute,useNavigation } from "@react-navigation/core";
 import Message from "../components/Message";
 import ChatData from "../assets/dummy-data/Chats";
 import InputField from "../components/InputField";
@@ -9,7 +9,9 @@ import InputField from "../components/InputField";
 export default function ChatRoomScreen() {
   const data = ChatData.messages;
   const route = useRoute();
-  console.log(route.params?.id,'route')
+  const navigation=useNavigation(); 
+  // console.log(route.params?.id,'route');
+  navigation.setOptions({title:'elonmusk'})
   return (
     <SafeAreaView style={styles.page}>
       <FlatList
