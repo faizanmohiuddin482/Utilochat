@@ -31,7 +31,7 @@ export default function InputField() {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={100}
+      keyboardVerticalOffset={80}
       style={styles.root}
     >
       <View style={styles.inputContainer}>
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   root: {
     flexDirection: "row",
     padding: 10,
+    // marginBottom:10,
   },
   inputContainer: {
     backgroundColor: "lightgrey",
